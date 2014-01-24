@@ -15,5 +15,11 @@ public class Tree <E extends Comparable>{
         root = temp;
     }
     
-    
+    public boolean insert(Node<E> data, Node<E> root){
+        if(root == null){
+            root  = data;
+        }else if(root.getData().){
+            
+        }
+    }
 }

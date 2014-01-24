@@ -35,5 +35,8 @@ public class Node<E> {
         return leftNode;
     }
     
+    public Node<E> getRight(){
+        return rightNode;
+    }
     
 }
