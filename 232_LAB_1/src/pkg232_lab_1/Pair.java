@@ -10,7 +10,9 @@ package pkg232_lab_1;
  *
  * @author byrdie
  */
-public interface Pair<K, V> {
-    public K getKey();
-    public V getValue();
+public interface Pair extends Comparable {
+    //int compareTo(Object element);
+    
+    int getInt();
+    String getString();
 }

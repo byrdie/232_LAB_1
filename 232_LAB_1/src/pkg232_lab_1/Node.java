@@ -8,7 +8,7 @@ package pkg232_lab_1;
  *
  * @author Roy
  */
-public class Node<E> {
+public class Node <E> {
     private E data;
     private Node<E> leftNode;
     private Node<E> rightNode;

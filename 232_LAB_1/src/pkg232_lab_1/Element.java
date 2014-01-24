@@ -5,25 +5,22 @@ package pkg232_lab_1;
  *
  * @author byrdie
  */
-abstract class Element<K, V> implements Pair<K, V> {
-    private int num;
-    private String string;
+public class Element implements Pair, Comparable {
+    public int num;
+    public String string;
     
-    private K key;
-    private V value;
-    
-    
-    Element(int i, String s){
+    public Element(int i, String s){
         this.num = i;
         this.string = s;
     }
     
+    @Override
     public int compareTo(Object element){
         Element otherElement = (Element) element;
 
-        if(string.compareTo(otherElement.string) < 0){
-            return -1;
-        }else if(string.compareTo(otherElement.string) == 0){
+ //       if(string.compareTo(otherElement.string) < 0){
+  //          return -1;
+   //     }else if(string.compareTo(otherElement.string) == 0){
             if(num < otherElement.num){
                 return -1;
             }else if(num == otherElement.num){
@@ -31,8 +28,19 @@ abstract class Element<K, V> implements Pair<K, V> {
             }else{
                 return 1;
             }
-        }else{
-            return 1;
-        }
+//        }else{
+ //           return 1;
+ //       }
+    }
+    
+    
+    @Override
+    public int getInt(){
+        return num;
+    }
+    
+    @Override
+    public String getString(){
+        return string;
     }
 }

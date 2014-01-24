@@ -5,7 +5,7 @@ package pkg232_lab_1;
  *
  * @author Roy
  */
-public class Tree <E extends Comparable> implements Pair<K,V>{
+public class Tree <E extends Pair> {
     private Node <E> root;
     
     Tree (E data){
@@ -16,19 +16,28 @@ public class Tree <E extends Comparable> implements Pair<K,V>{
     }
     
     public boolean insert(Node<E> data, Node<E> branchRoot){
+        boolean inserted;
+        
         if(branchRoot == null){
-            branchRoot  = data;
+            branchRoot = data;
             return true;
         }else if((data.getData().compareTo(branchRoot.getData())) == 0){
             return false;
         }
         else if((data.getData().compareTo(branchRoot.getData())) < 0){
-            insert(data, branchRoot.getLeft());
+            inserted = insert(data, branchRoot.getLeft());
+            if(inserted){ 
+                branchRoot.setLeft(data);
+            }
+            return false;
         }
         else{
-            insert(data, branchRoot.getRight());
+            inserted = insert(data, branchRoot.getRight());
+            if(inserted) {
+                branchRoot.setRight(data);
+            }
+            return false;
         }
-        return false;
     }
     
     void inorder(Node<E> node){
@@ -37,7 +46,12 @@ public class Tree <E extends Comparable> implements Pair<K,V>{
         }
         else{
             inorder(node.getLeft());
-            node.getData().
+            System.out.println(node.getData().getInt());
+            inorder(node.getRight());
         }
+    }
+    
+    public Node getRoot(){
+        return root;
     }
 }
