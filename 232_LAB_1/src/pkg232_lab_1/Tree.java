@@ -8,6 +8,7 @@ package pkg232_lab_1;
 public class Tree <E extends Pair> {
     private Node <E> root;
     
+    
     Tree (E data){
         Node<E> temp = new Node<>(data);
         temp.setLeft(null);
@@ -40,15 +41,43 @@ public class Tree <E extends Pair> {
         }
     }
     
-    void inorder(Node<E> node){
+    int[] inorder(Node<E> node, int[] list){
         if (node == null){
-            return;
+            return list;
         }
         else{
-            inorder(node.getLeft());
-            System.out.println(node.getData().getInt());
-            inorder(node.getRight());
+            list = inorder(node.getLeft(), list);
+            list[list[0]] = (node.getData().getInt());
+            list[0]++;
+            list = inorder(node.getRight(), list);
         }
+        return list;
+    }
+    
+    int[] preorder(Node<E> node, int[] list){        
+        if (node == null){
+            return list;
+        }
+        else{
+            list[list[0]] = (node.getData().getInt());
+            list[0]++;
+            preorder(node.getLeft(), list);           
+            preorder(node.getRight(), list);
+        }
+        return list;
+    }
+    
+    int[] postorder(Node<E> node, int[] list){
+        if (node == null){
+            return list;
+        }
+        else{
+            postorder(node.getLeft(), list);           
+            postorder(node.getRight(), list);
+            list[list[0]] = (node.getData().getInt());
+            list[0]++;
+        }
+        return list;
     }
     
     public Node getRoot(){
